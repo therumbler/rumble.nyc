@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spring Soft Launch</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background-color: #fdf6ee;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,200,180,0.25) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(180,230,180,0.25) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(220,200,255,0.15) 0%, transparent 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      max-width: 560px;
+      width: 100%;
+      padding: 0 0 48px 0;
+      box-shadow: 0 8px 48px rgba(160,130,100,0.12), 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+      border: 1px solid rgba(210,190,160,0.3);
+    }
+
+    /* ── Petal decorations ── */
+    .petal-bar {
+      width: 100%;
+      height: 12px;
+      background: linear-gradient(90deg,
+        #f9c6c6, #fde79a, #b8e8b0, #c5d9f7, #e8c5f5, #f9c6c6);
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 36px 40px 24px;
+      position: relative;
+    }
+
+    .season-label {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #b07d5e;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 600;
+      color: #3a6b35;
+      line-height: 1.15;
+    }
+
+    .title em {
+      font-style: italic;
+      color: #c0694a;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px auto;
+      max-width: 300px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4b896, transparent);
+    }
+
+    .divider-icon { font-size: 18px; }
+
+    /* ── Image placeholder ── */
+    .image-placeholder {
+      margin: 0 32px 32px;
+      height: 220px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #e8f5e1 0%, #fef0f0 50%, #eef3fd 100%);
+      border: 2px dashed #b8d4a8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #8ab87a;
+    }
+
+    .image-placeholder .ph-icon { font-size: 36px; }
+
+    .image-placeholder p {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #98b88a;
+    }
+
+    /* ── Details block ── */
+    .details {
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .meta-icon {
+      font-size: 20px;
+      width: 28px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .meta-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #b07d5e;
+      margin-bottom: 2px;
+    }
+
+    .meta-value {
+      font-size: 16px;
+      font-weight: 400;
+      color: #3d3228;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .separator {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e0c9b0, transparent);
+    }
+
+    .description {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #5e4f42;
+      font-weight: 300;
+      text-align: center;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── Footer flourish ── */
+    .footer {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 22px;
+      letter-spacing: 6px;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b0a090;
+      font-weight: 300;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="petal-bar"></div>
+
+    <div class="header">
+      <p class="season-label">You're cordially invited to</p>
+      <h1 class="title">Spring<br><em>Soft Launch</em></h1>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-icon">🌸</span>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+
+    <!-- Image Placeholder -->
+    <div>
+      <img src="spring_soft_launch_logo_1.png" alt="Spring Soft Launch Logo" style="max-width: 100%; max-height: 100%; border-radius: 12px; object-fit: contain; padding: 16px">
+    </div>
+
+    <div class="details">
+      <div class="event-meta">
+        <div class="meta-row">
+          <span class="meta-icon">🌿</span>
+          <div class="meta-text">
+            <span class="meta-label">Event</span>
+            <span class="meta-value">The Spring Soft Launch</span>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-icon">📍</span>
+          <div class="meta-text">
+            <span class="meta-label">Location</span>
+            <span class="meta-value">325 Kent Avenue</span>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-icon">🕐</span>
+          <div class="meta-text">
+            <span class="meta-label">Date & Time</span>
+            <span class="meta-value">Tuesday, March 31st · 4:00 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="separator"></div>
+
+      <p class="description">
+        Spring is officially in beta — and we're throwing a launch party to celebrate.
+        Join us on the balcony for good company, light bites, and a toast to longer days,
+        warmer evenings, and a season that's finally ready for its debut.
+      </p>
+
+      <div class="footer">🌼 🦋 🌷</div>
+      <p class="footer-note">Dress code: bloom accordingly</p>
+    </div>
+  </div>
+</body>
+</html>
